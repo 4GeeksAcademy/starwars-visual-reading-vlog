@@ -1,0 +1,203 @@
+/* 80s Retro StarWars Galaxy Theme */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Audiowide:wght@400&family=Electrolize:wght@400&display=swap');
+
+/* CSS Variables for 80s StarWars Theme */
+:root {
+  /* StarWars 80s Neon Colors */
+  --sw-yellow: #FFE81F;
+  --sw-blue: #00D4FF;
+  --sw-cyan: #00FFFF;
+  --sw-pink: #FF007F;
+  --sw-purple: #8A2BE2;
+  --sw-orange: #FF4500;
+  --sw-green: #00FF41;
+  
+  /* Dark Galaxy Colors */
+  --dark-space: #0a0a0f;
+  --deep-space: #1a1a2e;
+  --cosmic-purple: #16213e;
+  --nebula-blue: #0f3460;
+  
+  /* Neon Glows */
+  --neon-glow-blue: 0 0 10px #00D4FF, 0 0 20px #00D4FF, 0 0 30px #00D4FF;
+  --neon-glow-yellow: 0 0 10px #FFE81F, 0 0 20px #FFE81F, 0 0 30px #FFE81F;
+  --neon-glow-pink: 0 0 10px #FF007F, 0 0 20px #FF007F, 0 0 30px #FF007F;
+  --neon-glow-green: 0 0 10px #00FF41, 0 0 20px #00FF41, 0 0 30px #00FF41;
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Electrolize', 'Orbitron', monospace;
+  background: var(--dark-space);
+  color: var(--sw-cyan);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+.app-container {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.app-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* Galaxy Background Styles */
+.galaxy-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.gradient-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    var(--cosmic-purple) 0%,
+    var(--deep-space) 40%,
+    var(--dark-space) 100%
+  );
+  animation: cosmicPulse 8s ease-in-out infinite alternate;
+}
+
+/* Typography */
+.retro-title {
+  font-family: 'Audiowide', monospace;
+  font-size: 4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  background: linear-gradient(
+    45deg,
+    var(--sw-yellow),
+    var(--sw-blue),
+    var(--sw-pink)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: var(--neon-glow-blue);
+  animation: titleGlow 3s ease-in-out infinite alternate;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.retro-subtitle {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.5rem;
+  color: var(--sw-cyan);
+  text-shadow: var(--neon-glow-blue);
+  text-align: center;
+  margin-bottom: 3rem;
+  opacity: 0.8;
+}
+
+/* Card Styles */
+.retro-card {
+  background: linear-gradient(
+    135deg,
+    rgba(26, 26, 46, 0.9),
+    rgba(15, 52, 96, 0.8)
+  );
+  border: 2px solid var(--sw-blue);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 8px 32px rgba(0, 212, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.retro-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: var(--sw-yellow);
+  box-shadow: 
+    0 15px 50px rgba(255, 232, 31, 0.3),
+    var(--neon-glow-yellow);
+}
+
+/* Button Styles */
+.retro-btn {
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  padding: 12px 24px;
+  border: 2px solid var(--sw-blue);
+  background: transparent;
+  color: var(--sw-blue);
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.retro-btn:hover {
+  color: var(--dark-space);
+  border-color: var(--sw-yellow);
+  box-shadow: var(--neon-glow-yellow);
+  transform: scale(1.05);
+  background: var(--sw-yellow);
+}
+
+/* Animations */
+@keyframes cosmicPulse {
+  0% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+@keyframes titleGlow {
+  0% { text-shadow: var(--neon-glow-blue); }
+  100% { text-shadow: var(--neon-glow-yellow); }
+}
+
+/* Loading Spinner */
+.retro-spinner {
+  width: 60px;
+  height: 60px;
+  border: 3px solid transparent;
+  border-top: 3px solid var(--sw-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 2rem auto;
+  box-shadow: var(--neon-glow-blue);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .retro-title {
+    font-size: 2.5rem;
+  }
+  
+  .retro-subtitle {
+    font-size: 1.2rem;
+  }
+}
